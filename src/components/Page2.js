@@ -40,7 +40,7 @@ const Page2 = () => {
           {[...Array(40)].map((_, index) => (
             <div
               key={index}
-              className="line2 absolute w-px h-full bg-white/10 hidden sm:block"
+              className="line absolute w-px h-full bg-white/10 hidden sm:block"
               style={{
                 left: `${(index / 40) * 100}%`,
                 animationDelay: `${index * 0.1}s`,
@@ -50,7 +50,7 @@ const Page2 = () => {
           {[...Array(10)].map((_, index) => (
             <div
               key={index}
-              className="line2 absolute w-px h-full bg-white/10 sm:hidden"
+              className="line absolute w-px h-full bg-white/10 sm:hidden"
               style={{
                 left: `${(index / 10) * 100}%`,
                 animationDelay: `${index * 0.1}s`,

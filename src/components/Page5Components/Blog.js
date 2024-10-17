@@ -8,13 +8,19 @@ import BLOG3 from "../../assets/Rectangle 1070BLOG3.svg";
 import BLOG4 from "../../assets/Rectangle 1070BLOG4.svg";
 import BLOG5 from "../../assets/Rectangle 1070BLOG5.svg";
 import BLOG6 from "../../assets/Rectangle 1070BLOG6.svg";
-
 import AnimatedHeader from "./AnimatedHeader.js";
 
 
+import portfolioimgaes1 from "../../assets/BAVET_WEB_PIC.png";
+import portfolioimgaes2 from "../../assets/BAVET_WEB_PIC.png";
+import portfolioimgaes3 from "../../assets/BAVET_WEB_PIC.png";
+import portfolioimgaes4 from "../../assets/BAVET_WEB_PIC.png";
+import portfolioimgaes5 from "../../assets/BAVET_WEB_PIC.png";
+import portfolioimgaes6 from "../../assets/BAVET_WEB_PIC.png";
 
-const BlogPost = ({ number, date, content, imagePosition, image }) => {
+const BlogPost = ({ number, date, content, imagePosition, image, mobileImage }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const postRef = useRef(null);
 
   useEffect(() => {
@@ -33,10 +39,18 @@ const BlogPost = ({ number, date, content, imagePosition, image }) => {
       observer.observe(postRef.current);
     }
 
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     return () => {
       if (postRef.current) {
         observer.unobserve(postRef.current);
       }
+      window.removeEventListener('resize', checkMobile);
     };
   }, []);
 
@@ -55,7 +69,7 @@ const BlogPost = ({ number, date, content, imagePosition, image }) => {
           className={`md:w-1/3 mt-4 md:mt-0 ${imageClass} blogpage-blog-image-container`}
         >
           <img
-            src={image}
+            src={isMobile ? mobileImage : image}
             alt="Blog post"
             className="w-full h-48 md:h-full object-cover"
           />
@@ -68,9 +82,9 @@ const BlogPost = ({ number, date, content, imagePosition, image }) => {
               <span
                 className="fontmycustom"
                 style={{
-                  WebkitTextStroke: "1px #e3ddc8", // Apply stroke color
-                  color: "transparent", // Hide original text color
-                  fontSize: "4xl md:5xl", // Responsive font sizes
+                  WebkitTextStroke: "1px #e3ddc8",
+                  color: "transparent",
+                  fontSize: "4xl md:5xl",
                 }}
               >
                 {number}
@@ -80,7 +94,6 @@ const BlogPost = ({ number, date, content, imagePosition, image }) => {
           </div>
           <p className="text-sm text-[#e3ddc8] mb-2">{date}</p>
           <img src={BLOG} alt="Blog Bar" className="mb-4 text-[#e3ddc8]" />
-
           <p className="text-[#e3ddc8] custom-textcolorb">{content}</p>
         </div>
       </div>
@@ -123,6 +136,7 @@ const Blog = () => {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
       imagePosition: "left",
       image: BLOG1,
+      mobileImage: portfolioimgaes1,
     },
     {
       number: "02",
@@ -131,6 +145,7 @@ const Blog = () => {
         "is simply dummy text of the printing and typesetting industry...",
       imagePosition: "right",
       image: BLOG2,
+      mobileImage: portfolioimgaes2,
     },
     {
       number: "03",
@@ -139,6 +154,7 @@ const Blog = () => {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
       imagePosition: "left",
       image: BLOG3,
+      mobileImage: portfolioimgaes3,
     },
     {
       number: "04",
@@ -147,6 +163,7 @@ const Blog = () => {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
       imagePosition: "right",
       image: BLOG4,
+      mobileImage: portfolioimgaes4,
     },
     {
       number: "05",
@@ -155,6 +172,7 @@ const Blog = () => {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
       imagePosition: "left",
       image: BLOG5,
+      mobileImage: portfolioimgaes5,
     },
     {
       number: "06",
@@ -163,6 +181,7 @@ const Blog = () => {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
       imagePosition: "right",
       image: BLOG6,
+      mobileImage: portfolioimgaes6,
     },
   ];
 
@@ -172,7 +191,6 @@ const Blog = () => {
       className="blogpage-container min-h-screen flex flex-col justify-center items-center p-8 bg-[#1c1c1c] text-[#e3ddc8]"
     >
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        
         <AnimatedHeader />
 
         <main className="space-y-8">
