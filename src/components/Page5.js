@@ -29,7 +29,7 @@ const Page5 = forwardRef((props, ref) => {
         <Transition />
         <Blog id="blog-section" />
         <Contact id="contact-section" />
-        {/* <Footer/> */}
+        <Footer />
       </div>
     </div>
   );

@@ -10,15 +10,21 @@ import BLOG5 from "../../assets/Rectangle 1070BLOG5.svg";
 import BLOG6 from "../../assets/Rectangle 1070BLOG6.svg";
 import AnimatedHeader from "./AnimatedHeader.js";
 
+import portfolioimgaes1 from "../../assets/Rectangle 1071 portfolioimgaes1.svg";
+import portfolioimgaes2 from "../../assets/Rectangle 1070portfolioimgaes2.svg";
+import portfolioimgaes3 from "../../assets/Rectangle 1069portfolioimgaes3.svg";
+import portfolioimgaes4 from "../../assets/Rectangle 1068portfolioimgaes4.svg";
+import portfolioimgaes5 from "../../assets/Rectangle 1067portfolioimgaes5.svg";
+import portfolioimgaes6 from "../../assets/Rectangle 1076portfolioimgaes6.svg";
 
-import portfolioimgaes1 from "../../assets/BAVET_WEB_PIC.png";
-import portfolioimgaes2 from "../../assets/BAVET_WEB_PIC.png";
-import portfolioimgaes3 from "../../assets/BAVET_WEB_PIC.png";
-import portfolioimgaes4 from "../../assets/BAVET_WEB_PIC.png";
-import portfolioimgaes5 from "../../assets/BAVET_WEB_PIC.png";
-import portfolioimgaes6 from "../../assets/BAVET_WEB_PIC.png";
-
-const BlogPost = ({ number, date, content, imagePosition, image, mobileImage }) => {
+const BlogPost = ({
+  number,
+  date,
+  content,
+  imagePosition,
+  image,
+  mobileImage,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const postRef = useRef(null);
@@ -44,13 +50,13 @@ const BlogPost = ({ number, date, content, imagePosition, image, mobileImage }) 
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
 
     return () => {
       if (postRef.current) {
         observer.unobserve(postRef.current);
       }
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener("resize", checkMobile);
     };
   }, []);
 

@@ -117,7 +117,7 @@ const Transition = () => {
                 : "opacity-0 translate-x-full"
             }`}
           >
-            <p className="text-[#e0e0e0] text-2xl md:text-3xl lg:text-4xl font-light">
+            <p className="text-[#e2dcc8] text-2xl md:text-3xl lg:text-4xl font-light">
               Did you know sites with top-notch design and content are 53% more
               likely to hit Google's first page? Ready to boost your rankings?
             </p>

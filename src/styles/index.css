@@ -341,3 +341,95 @@ code {
     translateY(2px);
   border-radius: 50%;
 }
+
+.earth-container {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  transition: opacity 2100ms;
+  pointer-events: none;
+}
+
+.earth-container.show {
+  opacity: 1;
+}
+
+.earth-container.hide {
+  opacity: 0;
+}
+
+.earth-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.earth-gif {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  .earth-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: fit;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .earth-gif {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .earth-gif {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .earth-gif {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* For very large screens */
+@media (min-width: 1600px) {
+  .earth-gif {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* @media (min-width: 1200px) {
+  .earth-gif {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: 1%;
+  }
+}
+
+
+@media (min-width: 1600px) {
+  .earth-gif {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: 1%;
+  }
+} */
