@@ -1,78 +1,118 @@
-.social-buttons-container {
-    display: flex;
+/* From Uiverse.io by 0800Gonza */
+.socialContainercardbg {
+  width: 100%;
+  max-width: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+/* for all social containers*/
+.socialContainer {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: rgb(44, 44, 44);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+/* instagram*/
+.containerOne:hover {
+  background-color: #d62976;
+}
+
+.containerTwo:hover {
+  background-color: #00acee;
+}
+
+/* linkedin*/
+.containerThree:hover {
+  background-color: #0072b1;
+}
+
+.containerFour:hover {
+  background-color: black;
+}
+
+.containerFive:hover {
+  background-color: red;
+}
+
+.socialContainer:active {
+  transform: scale(0.9);
+  transition-duration: 0.3s;
+}
+
+.socialSvg {
+  width: 17px;
+}
+
+.socialSvg path {
+  fill: rgb(255, 255, 255);
+}
+
+.socialContainer:hover .socialSvg {
+  animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+  .socialContainercardbg {
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .socialContainercardbg {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .socialContainer {
+    width: 48px;
+    height: 48px;
+  }
+
+  .socialSvg {
+    width: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .socialContainercardbg {
+    padding: 10px;
     gap: 10px;
-    padding: 10px 0;
   }
-  
-  .social-button {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-style: preserve-3d;
-    transition: all 0.5s ease-in-out;
-    border-radius: 50%;
+
+  .socialContainer {
+    width: 42px;
+    height: 42px;
   }
-  
-  .social-button:hover {
-    background-color: white;
-    background-position: -100px 100px, -100px 100px;
-    transform: rotate3d(0.5, 1, 0, 30deg);
-    transform: perspective(180px) rotateX(65deg) translateY(2px);
-    box-shadow: 0px 10px 10px #26d3b4;
+
+  .socialSvg {
+    width: 14px;
   }
-  
-  .button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .button:hover {
-    transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-35deg) translateY(2px);
-    border-radius: 50%;
-  }
-  
-  .button svg {
-    width: 24px;
-    height: 24px;
-  }
-  
-  /* Media queries for responsiveness */
-  @media (max-width: 768px) {
-    .social-buttons-container {
-      gap: 5px;
-    }
-  
-    .social-button {
-      width: 35px;
-      height: 35px;
-    }
-  
-    .button svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .social-button {
-      width: 30px;
-      height: 30px;
-    }
-  
-    .button svg {
-      width: 18px;
-      height: 18px;
-    }
-  }
+}

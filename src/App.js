@@ -20,8 +20,11 @@ function App() {
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [isInServicesSection, setIsInServicesSection] = useState(false);
   const [cursorOverRightSide, setCursorOverRightSide] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
   const [touchStartY, setTouchStartY] = useState(null);
   const [isVerticalScrollingActive, setIsVerticalScrollingActive] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 6; // Assuming 6 pages including Page5
 
   useEffect(() => {
     const updateScrollLimits = () => {
@@ -89,12 +92,15 @@ function App() {
     switch (pageNumber) {
       case "home":
         newPosition = 0;
+        setCurrentPage(1);
         break;
       case "about":
         newPosition = window.innerWidth * 4.9;
+        setCurrentPage(5);
         break;
       case "services":
         newPosition = maxScroll;
+        setCurrentPage(6);
         setTimeout(() => {
           if (page5Ref.current) {
             const servicesSection = page5Ref.current.querySelector("#services-section");
@@ -113,6 +119,7 @@ function App() {
       case "portfolio":
       case "blog":
         newPosition = maxScroll;
+        setCurrentPage(6);
         setTimeout(() => {
           if (page5Ref.current) {
             const targetSection = page5Ref.current.querySelector(`#${pageNumber}-section`);
@@ -124,6 +131,7 @@ function App() {
         break;
       case "last":
         newPosition = maxScroll;
+        setCurrentPage(6);
         setTimeout(() => {
           if (page5Ref.current) {
             page5Ref.current.scrollTop = 0;
@@ -132,6 +140,7 @@ function App() {
         break;
       case "last-vertical":
         newPosition = maxScroll;
+        setCurrentPage(6);
         setTimeout(() => {
           if (page5Ref.current) {
             page5Ref.current.scrollTop = page5Ref.current.scrollHeight - page5Ref.current.clientHeight;
@@ -141,8 +150,10 @@ function App() {
       default:
         if (typeof pageNumber === "number") {
           newPosition = Math.min((pageNumber - 1) * window.innerWidth, maxScroll);
+          setCurrentPage(pageNumber);
         } else {
           newPosition = 0;
+          setCurrentPage(1);
         }
     }
 
@@ -237,40 +248,52 @@ function App() {
 
   useEffect(() => {
     const handleTouchStart = (e) => {
+      setTouchStartX(e.touches[0].clientX);
       setTouchStartY(e.touches[0].clientY);
     };
 
     const handleTouchMove = (e) => {
-      e.preventDefault();
-
-      if (touchStartY === null) {
+      if (touchStartX === null || touchStartY === null) {
         return;
       }
 
+      const touchEndX = e.touches[0].clientX;
       const touchEndY = e.touches[0].clientY;
+      const deltaX = touchStartX - touchEndX;
       const deltaY = touchStartY - touchEndY;
 
-      const isLastPage = scrollPosition >= maxScroll - 10;
+      // Determine if it's a horizontal swipe (more horizontal than vertical movement)
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        e.preventDefault(); // Prevent default scrolling behavior
 
-      if (isLastPage && page5Ref.current) {
-        if (page5Ref.current.scrollTop > 0 || deltaY > 0) {
-          // We're not at the top of Page5, or we're scrolling up
-          setIsVerticalScrollingActive(true);
-          page5Ref.current.scrollTop += deltaY;
-        } else if (page5Ref.current.scrollTop === 0 && deltaY < 0) {
-          // We're at the top of Page5 and trying to scroll down (swipe up)
-          setIsVerticalScrollingActive(false);
-          smoothScroll(deltaY);
+        // Determine if it's a significant swipe (e.g., more than 50px)
+        if (Math.abs(deltaX) > 50) {
+          if (deltaX > 0 && currentPage < totalPages) {
+            // Swipe left, go to next page
+            setCurrentPage(currentPage + 1);
+          } else if (deltaX < 0 && currentPage > 1) {
+            // Swipe right, go to previous page
+            setCurrentPage(currentPage - 1);
+          }
         }
-      } else if (!isVerticalScrollingActive) {
-        // We're not on the last page, or vertical scrolling is not active
-        smoothScroll(deltaY);
-      }
+      } else {
+        // Vertical scrolling logic for the last page
+        const isLastPage = currentPage === totalPages;
 
-      setTouchStartY(touchEndY);
+        if (isLastPage && page5Ref.current) {
+          if (page5Ref.current.scrollTop > 0 || deltaY > 0) {
+            setIsVerticalScrollingActive(true);
+            page5Ref.current.scrollTop += deltaY;
+          } else if (page5Ref.current.scrollTop === 0 && deltaY < 0) {
+            setIsVerticalScrollingActive(false);
+            smoothScroll(deltaY);
+          }
+        }
+      }
     };
 
     const handleTouchEnd = () => {
+      setTouchStartX(null);
       setTouchStartY(null);
       setIsVerticalScrollingActive(false);
     };
@@ -288,39 +311,12 @@ function App() {
         containerRef.current.removeEventListener("touchend", handleTouchEnd);
       }
     };
-  }, [scrollPosition, maxScroll, touchStartY, isVerticalScrollingActive]);
+  }, [currentPage, totalPages, touchStartX, touchStartY, isVerticalScrollingActive]);
 
   useEffect(() => {
-    const handlePage5TouchMove = (e) => {
-      if (scrollPosition >= maxScroll - 10 && page5Ref.current) {
-        const touch = e.touches[0];
-        const deltaY = touch.clientY - (touchStartY || touch.clientY);
-        
-        if (isInServicesSection && cursorOverRightSide) {
-          // Handle scrolling within the services section
-          const rightSideContent = page5Ref.current.querySelector("#services-section .custom-scrollbar");
-          if (rightSideContent) {
-            rightSideContent.scrollTop += -deltaY;
-          }
-        } else if (page5Ref.current.scrollTop > 0 || deltaY < 0) {
-          // Handle vertical scrolling on Page5
-          page5Ref.current.scrollTop += -deltaY;
-        }
-        
-        setTouchStartY(touch.clientY);
-      }
-    };
-
-    if (page5Ref.current) {
-      page5Ref.current.addEventListener("touchmove", handlePage5TouchMove, { passive: false });
-    }
-
-    return () => {
-      if (page5Ref.current) {
-        page5Ref.current.removeEventListener("touchmove", handlePage5TouchMove);
-      }
-    };
-  }, [scrollPosition, maxScroll, touchStartY, isInServicesSection, cursorOverRightSide]);
+    // Update scroll position when currentPage changes
+    setScrollPosition((currentPage - 1) * window.innerWidth);
+  }, [currentPage]);
 
   return (
     <Router>
@@ -354,7 +350,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
