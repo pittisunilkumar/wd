@@ -62,3 +62,22 @@
   .animate-left-to-right.animate {
     opacity: 1;
   }
+
+
+
+
+  /* Add space above and below the content on mobile */
+@media (max-width: 768px) {
+  #page2 {
+    padding-top: 40px; /* Add space above */
+  }
+
+  /* Reduce the gap between text and image on mobile */
+  .text-container {
+    margin-bottom: 16px; /* Reduce the gap between text and image */
+  }
+
+  .image-container {
+    margin-top: 16px; /* Reduce the gap between image and text */
+  }
+}
