@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>WEBDADDY | A Business Creation Digital Agency</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script>
+    const container = document.getElementById("scroll-container");
+    const page5 = document.getElementById("page5");
+    const videoBackground = document.getElementById("video-background");
+    let scrollPosition = 0;
+    let maxScroll = container.scrollWidth - window.innerWidth;
+
+    function updateScrollLimits() {
+      maxScroll = container.scrollWidth - window.innerWidth;
+    }
+
+    function smoothScroll(delta) {
+      const oldPosition = scrollPosition;
+      scrollPosition += delta;
+      scrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
+
+      if (oldPosition !== scrollPosition) {
+        container.style.transform = `translateX(-${scrollPosition}px)`;
+
+        // Hide video background when not on the first page
+        if (scrollPosition > 0) {
+          videoBackground.style.display = "none";
+        } else {
+          videoBackground.style.display = "block";
+        }
+
+        return true;
+      }
+      return false;
+    }
+
+    window.addEventListener(
+      "wheel",
+      (e) => {
+        updateScrollLimits();
+        const isLastPage = scrollPosition >= maxScroll - 10;
+
+        if (isLastPage) {
+          if (e.deltaY !== 0) {
+            page5.scrollTop += e.deltaY;
+            e.preventDefault();
+
+            if (page5.scrollTop <= 0 && e.deltaY < 0) {
+              e.preventDefault();
+              smoothScroll(-100);
+            }
+          }
+        } else {
+          e.preventDefault();
+          smoothScroll(e.deltaY);
+        }
+      },
+      { passive: false }
+    );
+
+    let startX = 0;
+    let startY = 0;
+
+    container.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    });
+
+    container.addEventListener("touchmove", (e) => {
+      const deltaX = startX - e.touches[0].clientX;
+      const deltaY = startY - e.touches[0].clientY;
+      const isLastPage = scrollPosition >= maxScroll - 10;
+
+      if (isLastPage) {
+        page5.scrollTop -= deltaY;
+        e.preventDefault();
+
+        if (page5.scrollTop <= 0 && deltaY < 0) {
+          smoothScroll(-deltaX);
+          e.preventDefault();
+        }
+      } else {
+        smoothScroll(deltaX);
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener("keydown", (e) => {
+      const isLastPage = scrollPosition >= maxScroll - 10;
+
+      if (e.key === "ArrowRight" && !isLastPage) {
+        smoothScroll(100);
+      } else if (e.key === "ArrowLeft") {
+        if (scrollPosition > 0) {
+          smoothScroll(-100);
+        } else if (isLastPage && page5.scrollTop === 0) {
+          smoothScroll(-100);
+        }
+      } else if (isLastPage) {
+        if (e.key === "ArrowDown") {
+          page5.scrollTop += 100;
+        } else if (e.key === "ArrowUp") {
+          if (page5.scrollTop > 0) {
+            page5.scrollTop -= 100;
+          } else {
+            smoothScroll(-100);
+          }
+        }
+      }
+    });
+
+    window.addEventListener("resize", updateScrollLimits);
+
+    function toggleContent(contentId, arrowId) {
+      const content = document.getElementById(contentId);
+      const arrow = document.getElementById(arrowId);
+      if (content.classList.contains("hidden")) {
+        content.classList.remove("hidden");
+        arrow.innerHTML = "▲";
+      } else {
+        content.classList.add("hidden");
+        arrow.innerHTML = "▼";
+      }
+    }
+  </script>
+
+  <script>
+    const projectNumber = document.getElementById("projectNumber");
+    const projectTitle = document.getElementById("projectTitle");
+    const projectImage = document.getElementById("projectImage");
+    const originalColor = "#26d4b4";
+    const hoverColor = "#e0e0e0";
+    const originalImage = "/api/placeholder/600/400";
+    const hoverImage = "/api/placeholder/600/400?text=Hovered+Image";
+
+    function handleHover(isHovering) {
+      projectNumber.style.color = isHovering ? hoverColor : originalColor;
+      projectTitle.style.color = isHovering ? hoverColor : "#e0e0e0";
+      projectImage.src = isHovering ? hoverImage : originalImage;
+      projectImage.style.opacity = isHovering ? "0.8" : "1";
+    }
+
+    projectNumber.addEventListener("mouseenter", () => handleHover(true));
+    projectNumber.addEventListener("mouseleave", () => handleHover(false));
+    projectTitle.addEventListener("mouseenter", () => handleHover(true));
+    projectTitle.addEventListener("mouseleave", () => handleHover(false));
+  </script>
+</html>

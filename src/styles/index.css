@@ -1,0 +1,343 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "mycustomfont";
+  src: url("../assets/fonts/merich.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.fontmycustom {
+  font-family: "mycustomfont", sans-serif;
+}
+
+.sidebaricon {
+  unicode-bidi: isolate;
+}
+
+.blend {
+  mix-blend-mode: difference;
+  color: #e2dcc8;
+  position: relative;
+  z-index: 2;
+}
+
+.blend2 {
+  mix-blend-mode: difference;
+  color: whitesmoke;
+  position: relative;
+  z-index: 2;
+}
+
+.blend22 {
+  mix-blend-mode: difference;
+  color: #e2dcc8;
+  position: relative;
+  z-index: 20; /* Adjust this based on the background layer you're blending with */
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.line2 {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  overflow: hidden;
+}
+
+.line2::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 75%,
+    #ffffff 100%
+  );
+  animation: drop 3s 0s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+/* .animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.animate-on-scroll.animate {
+  animation: fadeInUp 1s ease-out forwards;
+} */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(-50px) scale(0.95);
+  transition: all 2s ease-in-out;
+}
+
+/* Animated state */
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px #e3ddc8; /* Stroke width and color */
+  color: transparent; /* This ensures the stroke color is visible */
+}
+
+@media (max-width: 640px) {
+  .line2 {
+    width: 2px;
+  }
+  .line2::after {
+    height: 10vh;
+  }
+}
+
+.bg-businees {
+  color: #e2dcc8;
+}
+
+/* Update these styles in your existing CSS file */
+
+.portfoliopage-project-container {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.portfoliopage-project-container.animate-project {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfoliopage-project-image-container {
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.portfoliopage-project-text-container {
+  transform: translateX(50px);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.portfoliopage-project-container.animate-project
+  .portfoliopage-project-image-container,
+.portfoliopage-project-container.animate-project
+  .portfoliopage-project-text-container {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.text-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1px #e2dcc8;
+}
+
+.page4-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1px black;
+}
+
+/* Heading animation styles */
+.animate-left {
+  animation: slide-in-left 1s forwards;
+}
+
+.animate-right {
+  animation: slide-in-right 1s forwards;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .portfoliopage-project-container {
+    flex-direction: column;
+  }
+
+  .portfoliopage-project-text-container h2 {
+    font-size: 2rem;
+  }
+
+  .portfoliopage-project-text-container p {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1400px) {
+  .portfoliopage-project-text-container h2 {
+    font-size: 2.5vw;
+  }
+
+  .portfoliopage-project-text-container p {
+    font-size: 1.2vw;
+  }
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px #e2dcc8;
+  }
+
+  .text-fill {
+    -webkit-text-stroke: 0;
+  }
+
+  .animate-slide-left {
+    animation: slide-left 1s forwards;
+  }
+
+  .animate-slide-right {
+    animation: slide-right 1s forwards;
+  }
+
+  .animate-project {
+    animation: fade-in-up 0.5s forwards;
+  }
+
+  @keyframes slide-left {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-right {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* social meida css */
+
+.scoialmedia-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sm-child {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+  border-radius: 50%;
+  margin: 5px 5px;
+}
+
+.sm-child:hover {
+  background-color: white;
+  background-position: -100px 100px, -100px 100px;
+  transform: rotate3d(0.5, 1, 0, 30deg);
+  transform: perspective(180px) rotateX(65deg) translateY(2px);
+  box-shadow: 0px 10px 10px #26d3b4;
+}
+
+.button-sm {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
+
+.button-sm:hover {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-35deg)
+    translateY(2px);
+  border-radius: 50%;
+}

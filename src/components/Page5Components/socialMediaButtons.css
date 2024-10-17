@@ -1,0 +1,78 @@
+.social-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  
+  .social-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+    border-radius: 50%;
+  }
+  
+  .social-button:hover {
+    background-color: white;
+    background-position: -100px 100px, -100px 100px;
+    transform: rotate3d(0.5, 1, 0, 30deg);
+    transform: perspective(180px) rotateX(65deg) translateY(2px);
+    box-shadow: 0px 10px 10px #26d3b4;
+  }
+  
+  .button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button:hover {
+    transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-35deg) translateY(2px);
+    border-radius: 50%;
+  }
+  
+  .button svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .social-buttons-container {
+      gap: 5px;
+    }
+  
+    .social-button {
+      width: 35px;
+      height: 35px;
+    }
+  
+    .button svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .social-button {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .button svg {
+      width: 18px;
+      height: 18px;
+    }
+  }

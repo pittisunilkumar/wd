@@ -1,0 +1,59 @@
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-100px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes rightToLeft {
+    from { opacity: 0; transform: translateX(100%); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes leftToRight {
+    0% { opacity: 0; transform: translateX(-100%); }
+    60% { opacity: 1; transform: translateX(30px); }
+    80% { transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  
+  .animate-slide-down,
+  .animate-right-to-left,
+  .animate-slide-up-1,
+  .animate-left-to-right {
+    opacity: 0;
+  }
+  
+  .animate-slide-down.animate {
+    animation: slideDown 2s ease-in forwards;
+  }
+  
+  .animate-right-to-left.animate {
+    animation: rightToLeft 2s ease-in forwards;
+  }
+  
+  .animate-slide-up-1.animate {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-left-to-right.animate {
+    animation: leftToRight 5s forwards;
+  }
+  
+  .text-stroke {
+    -webkit-text-stroke: 1px #e2dcc8;
+    color: transparent;
+  }
+  
+  /* Ensure image stays visible after animation */
+  .animate-left-to-right {
+    opacity: 0;
+  }
+  
+  .animate-left-to-right.animate {
+    opacity: 1;
+  }
