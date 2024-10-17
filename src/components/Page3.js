@@ -45,12 +45,12 @@ const Page3 = () => {
               }}
             ></div>
           ))}
-          {[...Array(20)].map((_, index) => (
+          {[...Array(10)].map((_, index) => (
             <div
               key={index}
               className="line2 absolute w-px h-full bg-white/10 sm:hidden"
               style={{
-                left: `${(index / 20) * 100}%`,
+                left: `${(index / 10) * 100}%`,
                 animationDelay: `${index * 0.1}s`,
               }}
             ></div>
