@@ -6,47 +6,42 @@ import girishimg from "../../assets/girish_img-cropped.svg";
 import aliimg from "../../assets/ali_img-cropped.svg";
 
 const TeamMemberBox = ({ member, isVisible }) => {
-  if (!member.img) {
-    return (
-      <div className="hidden md:block">
-        <div className="border border-[#e2dcc8] p-4 md:p-6 lg:p-10 flex flex-col md:flex-row items-center h-full overflow-hidden transition-opacity duration-500 ease-out opacity-0">
-          <div className="w-16 h-16 md:w-20 md:h-20 md:mr-4"></div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div
-      className={`border border-[#e2dcc8] p-4 md:p-6 lg:p-10 flex flex-col md:flex-row items-center h-full overflow-hidden transition-opacity duration-500 ease-out ${
+      className={`border-r border-b border-[#e2dcc8] p-4 md:p-6 lg:p-10 flex flex-col md:flex-row items-center justify-center h-full overflow-hidden transition-opacity duration-500 ease-out ${
         isVisible ? "opacity-100 animate-fade-in" : "opacity-0"
-      }`}
+      } ${!member.img ? "bg-transparent" : ""}`}
+      style={{ minHeight: '150px' }}
     >
-      <img
-        src={member.img}
-        className="w-16 h-16 md:w-20 md:h-20 object-cover mb-2 md:mb-0 md:mr-4"
-        alt={`${member.name} image`}
-      />
-      <div className="flex flex-col text-center md:text-left">
-        <h2
-          className={`text-lg md:text-xl font-semibold p-1 transition-all duration-500 ${
-            isVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-full opacity-0"
-          }`}
-        >
-          {member.name}
-        </h2>
-        <p
-          className={`text-xs md:text-sm transition-all duration-500 delay-100 ${
-            isVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-full opacity-0"
-          }`}
-        >
-          {member.designation}
-        </p>
-      </div>
+      {member.img && (
+        <img
+          src={member.img}
+          className="w-16 h-16 md:w-20 md:h-20 object-cover mb-2 md:mb-0 md:mr-4"
+          alt={`${member.name} image`}
+        />
+      )}
+      {member.name && (
+        <div className="flex flex-col text-center md:text-left">
+          <h2
+            className={`text-lg md:text-xl font-semibold p-1 transition-all duration-500 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-full opacity-0"
+            }`}
+          >
+            {member.name}
+          </h2>
+          <p
+            className={`text-xs md:text-sm transition-all duration-500 delay-100 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-full opacity-0"
+            }`}
+          >
+            {member.designation}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
@@ -182,7 +177,7 @@ const OurTeam = () => {
         </p>
 
         <div className="w-full md:w-[85%] lg:w-[80%] xl:w-[70%] mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 border-l border-t border-[#e2dcc8]">
             {teamMembers.map((member, index) => (
               <div className="team-member" key={index} data-index={index}>
                 <TeamMemberBox

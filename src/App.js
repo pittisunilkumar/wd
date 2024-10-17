@@ -8,7 +8,6 @@ import Page3 from "./components/Page3";
 import Page4 from "./components/Page4";
 import About from "./components/About";
 import Page5 from "./components/Page5";
-import Loader from "./components/Loader";
 import "./styles/App.css";
 
 function AppContent() {
@@ -21,8 +20,8 @@ function AppContent() {
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [isInServicesSection, setIsInServicesSection] = useState(false);
   const [cursorOverRightSide, setCursorOverRightSide] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(null);
   const [touchStartY, setTouchStartY] = useState(null);
+  const [isVerticalScrollingActive, setIsVerticalScrollingActive] = useState(false);
 
   useEffect(() => {
     const updateScrollLimits = () => {
@@ -48,16 +47,13 @@ function AppContent() {
       if (page5Ref.current) {
         setVerticalScrollPosition(page5Ref.current.scrollTop);
 
-        const servicesSection =
-          page5Ref.current.querySelector("#services-section");
+        const servicesSection = page5Ref.current.querySelector("#services-section");
         if (servicesSection) {
-          const servicesSectionTop =
-            servicesSection.offsetTop - page5Ref.current.offsetTop;
-          const servicesSectionBottom =
-            servicesSectionTop + servicesSection.offsetHeight;
+          const servicesSectionTop = servicesSection.offsetTop - page5Ref.current.offsetTop;
+          const servicesSectionBottom = servicesSectionTop + servicesSection.offsetHeight;
           setIsInServicesSection(
             page5Ref.current.scrollTop >= servicesSectionTop &&
-              page5Ref.current.scrollTop < servicesSectionBottom
+            page5Ref.current.scrollTop < servicesSectionBottom
           );
         }
       }
@@ -99,22 +95,15 @@ function AppContent() {
         break;
       case "services":
         newPosition = maxScroll;
-        // console.log('Scrolling to services, newPosition:', newPosition);
         setTimeout(() => {
           if (page5Ref.current) {
-            const servicesSection =
-              page5Ref.current.querySelector("#services-section");
-            // console.log('Services section found:', servicesSection);
+            const servicesSection = page5Ref.current.querySelector("#services-section");
             if (servicesSection) {
-              const scrollTop =
-                servicesSection.offsetTop - page5Ref.current.offsetTop;
-              // console.log('Scrolling to:', scrollTop);
+              const scrollTop = servicesSection.offsetTop - page5Ref.current.offsetTop;
               page5Ref.current.scrollTop = scrollTop;
 
-              const rightSideContent =
-                servicesSection.querySelector(".custom-scrollbar");
+              const rightSideContent = servicesSection.querySelector(".custom-scrollbar");
               if (rightSideContent) {
-                // console.log('Scrolling right side content to top');
                 rightSideContent.scrollTop = 0;
               }
             }
@@ -126,12 +115,9 @@ function AppContent() {
         newPosition = maxScroll;
         setTimeout(() => {
           if (page5Ref.current) {
-            const targetSection = page5Ref.current.querySelector(
-              `#${pageNumber}-section`
-            );
+            const targetSection = page5Ref.current.querySelector(`#${pageNumber}-section`);
             if (targetSection) {
-              page5Ref.current.scrollTop =
-                targetSection.offsetTop - page5Ref.current.offsetTop;
+              page5Ref.current.scrollTop = targetSection.offsetTop - page5Ref.current.offsetTop;
             }
           }
         }, 100);
@@ -148,17 +134,13 @@ function AppContent() {
         newPosition = maxScroll;
         setTimeout(() => {
           if (page5Ref.current) {
-            page5Ref.current.scrollTop =
-              page5Ref.current.scrollHeight - page5Ref.current.clientHeight;
+            page5Ref.current.scrollTop = page5Ref.current.scrollHeight - page5Ref.current.clientHeight;
           }
         }, 100);
         break;
       default:
         if (typeof pageNumber === "number") {
-          newPosition = Math.min(
-            (pageNumber - 1) * window.innerWidth,
-            maxScroll
-          );
+          newPosition = Math.min((pageNumber - 1) * window.innerWidth, maxScroll);
         } else {
           newPosition = 0;
         }
@@ -172,18 +154,16 @@ function AppContent() {
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (page5Ref.current && isInServicesSection) {
-        const servicesSection =
-          page5Ref.current.querySelector("#services-section");
+        const servicesSection = page5Ref.current.querySelector("#services-section");
         if (servicesSection) {
-          const rightSideContent =
-            servicesSection.querySelector(".custom-scrollbar");
+          const rightSideContent = servicesSection.querySelector(".custom-scrollbar");
           if (rightSideContent) {
             const rect = rightSideContent.getBoundingClientRect();
             setCursorOverRightSide(
               e.clientX >= rect.left &&
-                e.clientX <= rect.right &&
-                e.clientY >= rect.top &&
-                e.clientY <= rect.bottom
+              e.clientX <= rect.right &&
+              e.clientY >= rect.top &&
+              e.clientY <= rect.bottom
             );
           }
         }
@@ -205,10 +185,8 @@ function AppContent() {
       const isLastPage = scrollPosition >= maxScroll - 10;
 
       if (isLastPage && page5Ref.current) {
-        const servicesSection =
-          page5Ref.current.querySelector("#services-section");
-        const rightSideContent =
-          servicesSection?.querySelector(".custom-scrollbar");
+        const servicesSection = page5Ref.current.querySelector("#services-section");
+        const rightSideContent = servicesSection?.querySelector(".custom-scrollbar");
 
         if (isInServicesSection && rightSideContent && cursorOverRightSide) {
           const isScrollingUp = e.deltaY < 0;
@@ -219,35 +197,28 @@ function AppContent() {
             rightSideContent.scrollHeight;
 
           if (isScrollingDown && !isAtBottomOfServices) {
-            // Scrolling down within services
             rightSideContent.scrollTop += e.deltaY;
           } else if (isScrollingUp && !isAtTopOfServices) {
-            // Scrolling up within services
             rightSideContent.scrollTop += e.deltaY;
           } else if (
             (isScrollingUp && isAtTopOfServices) ||
             (isScrollingDown && isAtBottomOfServices)
           ) {
-            // Allow Page5 to scroll when at the edges of services
             const newScrollTop = page5Ref.current.scrollTop + e.deltaY;
             if (
               newScrollTop >= 0 &&
-              newScrollTop <=
-                page5Ref.current.scrollHeight - page5Ref.current.clientHeight
+              newScrollTop <= page5Ref.current.scrollHeight - page5Ref.current.clientHeight
             ) {
               page5Ref.current.scrollTop = newScrollTop;
             }
           }
         } else {
-          // Normal vertical scrolling in Page5
           const newScrollTop = page5Ref.current.scrollTop + e.deltaY;
           if (newScrollTop <= 0 && e.deltaY < 0) {
-            // At the top of Page5 and trying to scroll up further
             smoothScroll(-100);
           } else if (
             newScrollTop >= 0 &&
-            newScrollTop <=
-              page5Ref.current.scrollHeight - page5Ref.current.clientHeight
+            newScrollTop <= page5Ref.current.scrollHeight - page5Ref.current.clientHeight
           ) {
             page5Ref.current.scrollTop = newScrollTop;
           }
@@ -262,79 +233,94 @@ function AppContent() {
     return () => {
       window.removeEventListener("wheel", handleWheel);
     };
-  }, [
-    scrollPosition,
-    maxScroll,
-    scrollMultiplier,
-    isInServicesSection,
-    cursorOverRightSide,
-  ]);
+  }, [scrollPosition, maxScroll, scrollMultiplier, isInServicesSection, cursorOverRightSide]);
 
   useEffect(() => {
     const handleTouchStart = (e) => {
-      setTouchStartX(e.touches[0].clientX);
       setTouchStartY(e.touches[0].clientY);
     };
 
     const handleTouchMove = (e) => {
-      if (touchStartX === null || touchStartY === null) {
+      e.preventDefault();
+
+      if (touchStartY === null) {
         return;
       }
 
-      const touchEndX = e.touches[0].clientX;
       const touchEndY = e.touches[0].clientY;
-      const deltaX = touchStartX - touchEndX;
       const deltaY = touchStartY - touchEndY;
 
-      // Determine if the user is scrolling horizontally or vertically
-      if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        // Horizontal scrolling
-        e.preventDefault();
-        smoothScroll(deltaX);
-      } else {
-        // Vertical scrolling
-        if (scrollPosition >= maxScroll - 10 && page5Ref.current) {
-          const newScrollTop = page5Ref.current.scrollTop + deltaY;
-          if (
-            newScrollTop >= 0 &&
-            newScrollTop <=
-              page5Ref.current.scrollHeight - page5Ref.current.clientHeight
-          ) {
-            page5Ref.current.scrollTop = newScrollTop;
-          }
+      const isLastPage = scrollPosition >= maxScroll - 10;
+
+      if (isLastPage && page5Ref.current) {
+        if (page5Ref.current.scrollTop > 0 || deltaY > 0) {
+          // We're not at the top of Page5, or we're scrolling up
+          setIsVerticalScrollingActive(true);
+          page5Ref.current.scrollTop += deltaY;
+        } else if (page5Ref.current.scrollTop === 0 && deltaY < 0) {
+          // We're at the top of Page5 and trying to scroll down (swipe up)
+          setIsVerticalScrollingActive(false);
+          smoothScroll(deltaY);
         }
+      } else if (!isVerticalScrollingActive) {
+        // We're not on the last page, or vertical scrolling is not active
+        smoothScroll(deltaY);
       }
 
-      setTouchStartX(touchEndX);
       setTouchStartY(touchEndY);
     };
 
     const handleTouchEnd = () => {
-      setTouchStartX(null);
       setTouchStartY(null);
+      setIsVerticalScrollingActive(false);
     };
 
     if (containerRef.current) {
-      containerRef.current.addEventListener("touchstart", handleTouchStart, {
-        passive: false,
-      });
-      containerRef.current.addEventListener("touchmove", handleTouchMove, {
-        passive: false,
-      });
+      containerRef.current.addEventListener("touchstart", handleTouchStart, { passive: false });
+      containerRef.current.addEventListener("touchmove", handleTouchMove, { passive: false });
       containerRef.current.addEventListener("touchend", handleTouchEnd);
     }
 
     return () => {
       if (containerRef.current) {
-        containerRef.current.removeEventListener(
-          "touchstart",
-          handleTouchStart
-        );
+        containerRef.current.removeEventListener("touchstart", handleTouchStart);
         containerRef.current.removeEventListener("touchmove", handleTouchMove);
         containerRef.current.removeEventListener("touchend", handleTouchEnd);
       }
     };
-  }, [scrollPosition, maxScroll, touchStartX, touchStartY]);
+  }, [scrollPosition, maxScroll, touchStartY, isVerticalScrollingActive]);
+
+  useEffect(() => {
+    const handlePage5TouchMove = (e) => {
+      if (scrollPosition >= maxScroll - 10 && page5Ref.current) {
+        const touch = e.touches[0];
+        const deltaY = touch.clientY - (touchStartY || touch.clientY);
+        
+        if (isInServicesSection && cursorOverRightSide) {
+          // Handle scrolling within the services section
+          const rightSideContent = page5Ref.current.querySelector("#services-section .custom-scrollbar");
+          if (rightSideContent) {
+            rightSideContent.scrollTop += -deltaY;
+          }
+        } else if (page5Ref.current.scrollTop > 0 || deltaY < 0) {
+          // Handle vertical scrolling on Page5
+          page5Ref.current.scrollTop += -deltaY;
+        }
+        
+        setTouchStartY(touch.clientY);
+      }
+    };
+
+    if (page5Ref.current) {
+      page5Ref.current.addEventListener("touchmove", handlePage5TouchMove, { passive: false });
+    }
+
+    return () => {
+      if (page5Ref.current) {
+        page5Ref.current.removeEventListener("touchmove", handlePage5TouchMove);
+      }
+    };
+  }, [scrollPosition, maxScroll, touchStartY, isInServicesSection, cursorOverRightSide]);
 
   return (
     <Router>
@@ -350,9 +336,7 @@ function AppContent() {
           <div
             ref={containerRef}
             className={`flex w-[600vw] h-screen ${
-              isInitialRender
-                ? ""
-                : "transition-transform duration-500 ease-out"
+              isInitialRender ? "" : "transition-transform duration-500 ease-out"
             }`}
             style={{ transform: `translateX(-${scrollPosition}px)` }}
           >
@@ -369,18 +353,4 @@ function AppContent() {
   );
 }
 
-function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  return <>{loading ? <Loader /> : <AppContent />}</>;
-}
-
-export default App;
+export default AppContent;
