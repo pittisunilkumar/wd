@@ -10,7 +10,7 @@ import About from "./components/About";
 import Page5 from "./components/Page5";
 import "./styles/App.css";
 
-function AppContent() {
+function App() {
   const containerRef = useRef(null);
   const page5Ref = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -353,4 +353,8 @@ function AppContent() {
   );
 }
 
-export default AppContent;
+export default App;
+
+
+
+
