@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.03 230.04">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: AcuminConcept-WideUltraBlack, 'Acumin Variable Concept';
+        font-size: 110px;
+        font-variation-settings: 'wght' 900, 'wdth' 115, 'slnt' 0;
+        font-weight: 800;
+        stroke-width: 3px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer_1">
+    <text class="cls-1" transform="translate(1.5 199.72) scale(1.07 1)"><tspan x="0" y="0">D</tspan></text>
+    <line class="cls-2" x1="43.27" y1="120.77" x2="43.27"/>
+  </g>
+</svg>
