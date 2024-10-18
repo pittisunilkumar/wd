@@ -139,10 +139,10 @@ const Portfolio = () => {
                     : "items-end md:order-2"
                 }`}
               >
-                <h2 className="text-4xl font-bold mb-4 text-center">
+                <h2 className="fontmycustom text-4xl font-bold mb-4 text-center">
                   {project.name}
                 </h2>
-                <p className="text-xl mb-4">{project.description}</p>
+                <p className="ptagfont text-xl mb-4">{project.description}</p>
                 <div className="flex items-center justify-center">
                   <div className="relative w-12 h-12 rounded-full border border-[#e2dcc8] bg-[#e2dcc8] flex items-center justify-center hover:bg-[#26d4b4] cursor-pointer transition-all duration-300">
                     <img

@@ -11,7 +11,7 @@ const TeamMemberBox = ({ member, isVisible }) => {
       className={`border-r border-b border-[#e2dcc8] p-4 md:p-6 lg:p-10 flex flex-col md:flex-row items-center justify-center h-full overflow-hidden transition-opacity duration-500 ease-out ${
         isVisible ? "opacity-100 animate-fade-in" : "opacity-0"
       } ${!member.img ? "bg-transparent" : ""}`}
-      style={{ minHeight: '150px' }}
+      style={{ minHeight: "150px" }}
     >
       {member.img && (
         <img
@@ -21,7 +21,7 @@ const TeamMemberBox = ({ member, isVisible }) => {
         />
       )}
       {member.name && (
-        <div className="flex flex-col text-center md:text-left">
+        <div className="fontmycustom flex flex-col text-center md:text-left">
           <h2
             className={`text-lg md:text-xl font-semibold p-1 transition-all duration-500 ${
               isVisible
@@ -32,7 +32,7 @@ const TeamMemberBox = ({ member, isVisible }) => {
             {member.name}
           </h2>
           <p
-            className={`text-xs md:text-sm transition-all duration-500 delay-100 ${
+            className={`ptagfont text-xs md:text-sm transition-all duration-500 delay-100 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-full opacity-0"
@@ -170,13 +170,13 @@ const OurTeam = () => {
           </span>
         </h1>
 
-        <p className="text-base md:text-lg lg:text-xl xl:text-2xl mb-8 md:mb-12 max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto text-center bg-abusinees">
+        <p className=" ptagfont text-base md:text-lg lg:text-xl xl:text-2xl mb-8 md:mb-12 max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto text-center bg-abusinees">
           You will find some of the brightest minds on the web in our team. Your
           success defines the core of our processes. Every collaboration pins it
           down and are mission-oriented and driven.
         </p>
 
-        <div className="w-full md:w-[85%] lg:w-[80%] xl:w-[70%] mx-auto">
+        <div className=" w-full md:w-[85%] lg:w-[80%] xl:w-[70%] mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 border-l border-t border-[#e2dcc8]">
             {teamMembers.map((member, index) => (
               <div className="team-member" key={index} data-index={index}>

@@ -116,13 +116,14 @@ const Page3 = () => {
                 WE "TRUST"
               </span>
             </h1>
-            <p className="text-lg lg:text-[1.6vw] text-[#e2dcc8] mt-2 sm:mt-8 leading-relaxed lg:text-left mobile-text-adjust">
+            <p className="ptagfont text-lg lg:text-[1.6vw] text-[#e2dcc8] mt-2 sm:mt-8 leading-relaxed lg:text-left mobile-text-adjust">
               Our human-led, AI-powered digital marketing creates trust, builds
               value, and maximizes your ROI for your business.
             </p>
           </div>
 
           <div className="text-center mb-4 sm:mb-8 lg:mb-16 animate-on-scroll">
+
             <p className="text-xl lg:text-[2vw] text-[#e2dcc8] mb-2 sm:mb-4 mobile-text-adjust ">
               We will put you in the driver's seat like a Formula 1 racer. A
               digital marketing team assisting you to win with AI.
@@ -149,7 +150,7 @@ const Page3 = () => {
                 RACES!
               </span>
             </h1>
-            <p className="text-lg lg:text-[1.6vw] text-[#e2dcc8] mt-2 sm:mt-8 leading-relaxed mobile-text-adjust">
+            <p className=" ptagfont text-lg lg:text-[1.6vw] text-[#e2dcc8] mt-2 sm:mt-8 leading-relaxed mobile-text-adjust">
               It's not enough to win races. Like race cars,
               <br className="hidden sm:inline" />
               you have to keep your website primed for action.

@@ -213,7 +213,7 @@ const LatestProjects = () => {
         </div>
 
         <p
-          className={`text-base sm:text-lg md:text-xl lg:text-2xl font-normal leading-relaxed text-center max-w-4xl mx-auto px-4 sm:px-5 mb-12 sm:mb-20 transition-all duration-1000 ${
+          className={`ptagfont text-base sm:text-lg md:text-xl lg:text-2xl font-normal leading-relaxed text-center max-w-4xl mx-auto px-4 sm:px-5 mb-12 sm:mb-20 transition-all duration-1000 ${
             animate
               ? "animate-[fadeInUp_1s_forwards_0.5s]"
               : "opacity-0 translate-y-10"
@@ -226,7 +226,7 @@ const LatestProjects = () => {
 
         <button
           onClick={handleModalToggle}
-          className={`border-2 sm:border-4 border-[#e2dcc8] bg-transparent text-[#e2dcc8] py-2 sm:py-4 px-4 sm:px-8 text-sm sm:text-base md:text-lg lg:text-2xl font-montserrat cursor-pointer rounded-md mx-auto block mt-8 sm:mt-20 mb-12 sm:mb-20 transition-all duration-1000 hover:bg-[#e2dcc8] hover:text-[#282828] ${
+          className={`ptagfont border-2 sm:border-4 border-[#e2dcc8] bg-transparent text-[#e2dcc8] py-2 sm:py-4 px-4 sm:px-8 text-sm sm:text-base md:text-lg lg:text-2xl font-montserrat cursor-pointer rounded-md mx-auto block mt-8 sm:mt-20 mb-12 sm:mb-20 transition-all duration-1000 hover:bg-[#e2dcc8] hover:text-[#282828] ${
             animate
               ? "animate-[fadeInUp_1s_forwards_0.7s]"
               : "opacity-0 translate-y-10"
@@ -249,9 +249,11 @@ const LatestProjects = () => {
             >
               <div className="flex items-start w-full sm:w-auto z-10">
                 <h1
-                  className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mr-4 sm:mr-16 text-transparent transition-all duration-1000 group-hover:text-[#e2dcc8] ${
+                  className={`fontmycustom text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mr-4 sm:mr-16 text-transparent transition-all duration-1000 group-hover:text-[#e2dcc8] ${
                     animate
-                      ? `animate-[slideInLeft_1s_forwards_${1.1 + index * 0.2}s]`
+                      ? `animate-[slideInLeft_1s_forwards_${
+                          1.1 + index * 0.2
+                        }s]`
                       : "opacity-0 -translate-x-full"
                   }`}
                   style={{ WebkitTextStroke: "1px #e2dcc8" }}
@@ -261,14 +263,16 @@ const LatestProjects = () => {
                 <div
                   className={`flex-1 transition-all duration-1000 group-hover:text-[#26d3b4] ${
                     animate
-                      ? `animate-[slideInRight_1s_forwards_${1.1 + index * 0.2}s]`
+                      ? `animate-[slideInRight_1s_forwards_${
+                          1.1 + index * 0.2
+                        }s]`
                       : "opacity-0 translate-x-full"
                   }`}
                 >
-                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-1 sm:mb-2">
+                  <p className="ptagfont text-base sm:text-lg md:text-xl lg:text-2xl mb-1 sm:mb-2">
                     {project.type}
                   </p>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+                  <h3 className="fontmycustom text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
                     {project.title}
                   </h3>
                 </div>
