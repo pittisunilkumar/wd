@@ -123,7 +123,8 @@ const Page3 = () => {
           </div>
 
           <div className="text-center mb-4 sm:mb-8 lg:mb-16 animate-on-scroll">
-            <p className="text-xl lg:text-[2vw] text-[#e2dcc8] mb-2 sm:mb-4 mobile-text-adjust ptagfont">
+
+            <p className="text-xl lg:text-[2vw] text-[#e2dcc8] mb-2 sm:mb-4 mobile-text-adjust ">
               We will put you in the driver's seat like a Formula 1 racer. A
               digital marketing team assisting you to win with AI.
             </p>

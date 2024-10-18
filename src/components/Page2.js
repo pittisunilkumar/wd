@@ -35,32 +35,7 @@ const Page2 = () => {
       id="page2"
       className="flex-none w-screen md:w-[120vw] lg:w-[140vw] h-screen bg-[#2b2a2a] relative overflow-hidden md:-ml-[10vw] lg:-ml-[20vw]"
     >
-      {/* <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-[300%] h-[300%] top-[-100%] left-[-100%] transform rotate-[315deg]">
-          {[...Array(40)].map((_, index) => (
-            <div
-              key={index}
-              className="line absolute w-px h-full bg-white/10 hidden sm:block"
-              style={{
-                left: `${(index / 40) * 100}%`,
-                animationDelay: `${index * 0.1}s`,
-              }}
-            ></div>
-          ))}
-          {[...Array(10)].map((_, index) => (
-            <div
-              key={index}
-              className="line absolute w-px h-full bg-white/10 sm:hidden"
-              style={{
-                left: `${(index / 10) * 100}%`,
-                animationDelay: `${index * 0.1}s`,
-                top: "-100%",
-                bottom: "-100%",
-              }}
-            ></div>
-          ))}
-        </div>
-      </div> */}
+     
 
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-[300%] h-[300%] top-[-100%] left-[-100%] transform rotate-[37deg]">
@@ -81,6 +56,8 @@ const Page2 = () => {
               style={{
                 left: `${(index / 10) * 100}%`,
                 animationDelay: `${index * 0.1}s`,
+                top: '-100%',
+                bottom: '-100%',
               }}
             ></div>
           ))}

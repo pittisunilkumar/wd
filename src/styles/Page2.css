@@ -33,6 +33,11 @@
 .animate-left-to-right.animate {
   opacity: 1;
 }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.1; }
+}
+
 
 @keyframes slideDown {
   from {
@@ -91,6 +96,16 @@
 @media (max-width: 768px) {
   #page2 {
     padding-top: 20px; /* Add space above */
+
+  }
+
+
+
+
+  /* Add space above and below the content on mobile */
+@media (max-width: 768px) {
+  #page2 {
+    padding-top: 40px; /* Add space above */
   }
 
   /* Reduce the gap between text and image on mobile */
@@ -102,3 +117,4 @@
     margin-top: 16px; /* Reduce the gap between image and text */
   }
 }
+
