@@ -498,12 +498,12 @@ const Services = React.forwardRef((props, ref) => {
       </h1>
 
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/3 md:sticky md:top-10 self-start pl-2 sm:pl-4 md:pl-[75px] pt-4 md:pt-[100px] h-auto md:h-[calc(100vh-140px)] mb-8 md:mb-0 overflow-y-auto md:overflow-y-visible">
+        <div className="  md:w-1/3 md:sticky md:top-10 self-start pl-2 sm:pl-4 md:pl-[75px] pt-4 md:pt-[100px] h-auto md:h-[calc(100vh-140px)] mb-8 md:mb-0 overflow-y-auto md:overflow-y-visible">
           {services.map((service, index) => (
             <h2
               key={index}
               onClick={() => handleServiceClick(index)}
-              className={`service-title text-xl md:text-[2vw] mb-6 md:mb-20 cursor-pointer transition-all duration-300 hover:text-[#e2dcc8] hover:scale-105 
+              className={`ptagfont service-title text-xl md:text-[2vw] mb-6 md:mb-20 cursor-pointer transition-all duration-300 hover:text-[#e2dcc8] hover:scale-105 
                 ${visibleSection === index ? "animate-zoom-in" : ""}`}
               data-number={`0${index + 1}/`}
             >
@@ -522,7 +522,7 @@ const Services = React.forwardRef((props, ref) => {
               ref={(el) => (serviceSectionRefs.current[serviceIndex] = el)}
             >
               <h2
-                className="text-3xl md:text-[4vw] font-bold mb-2 text-transparent bg-clip-text from-[#e2dcc8] to-[#e2dcc8] text-center p-2"
+                className="fontmycustom  text-3xl md:text-[4vw] font-bold mb-2 text-transparent bg-clip-text from-[#e2dcc8] to-[#e2dcc8] text-center p-2"
                 style={{
                   color: "transparent",
                   WebkitTextStroke: "1px #e3ddc8",
@@ -532,7 +532,7 @@ const Services = React.forwardRef((props, ref) => {
                 {service.title.split(" ")[0]}
               </h2>
               <h2
-                className="text-3xl md:text-[4vw] font-bold mb-4 md:mb-6 text-transparent bg-clip-text from-[#e2dcc8] to-[#e2dcc8] text-center p-4"
+                className="fontmycustom text-3xl md:text-[4vw] font-bold mb-4 md:mb-6 text-transparent bg-clip-text from-[#e2dcc8] to-[#e2dcc8] text-center p-4"
                 style={{
                   color: "transparent",
                   WebkitTextStroke: "1px #e3ddc8",
@@ -541,9 +541,9 @@ const Services = React.forwardRef((props, ref) => {
               >
                 {service.title.split(" ").slice(1).join(" ")}
               </h2>
-              <div className="mb-6 md:mb-8 text-base md:text-[1.5vw]">
+              <div className="ptagfont mb-6 md:mb-8 text-base md:text-[1.5vw]">
                 {Array.isArray(service.description) ? (
-                  <ul className="list-square list-inside space-y-2">
+                  <ul className="list-square list-inside space-y-2 ptagfont">
                     {service.description.map((desc, index) => (
                       <li key={index}>{desc}</li>
                     ))}
@@ -565,7 +565,7 @@ const Services = React.forwardRef((props, ref) => {
                         handleAccordionToggle(`${serviceIndex}-${item.id}`)
                       }
                     >
-                      <span className="flex items-center justify-between w-full font-semibold">
+                      <span className=" fontmycustom flex items-center justify-between w-full font-semibold">
                         <span
                           className="text-xl md:text-[4vw] text-transparent bg-clip-text from-[#e2dcc8] to-[#e2dcc8] p-2 text-start"
                           style={{
@@ -603,7 +603,7 @@ const Services = React.forwardRef((props, ref) => {
                     </button>
                     {activeIndex === `${serviceIndex}-${item.id}` && (
                       <div className="p-3 sm:p-4 ">
-                        <ul className="list-disc list-inside space-y-2 text-sm md:text-[1.2vw]">
+                        <ul className="ptagfont list-disc list-inside space-y-2 text-sm md:text-[1.2vw]">
                           {item.content.map((point, pointIndex) => (
                             <li key={pointIndex}>{point}</li>
                           ))}

@@ -83,7 +83,7 @@ const BlogPost = ({
         <div
           className={`md:w-2/3 p-6 ${contentClass} blogpage-blog-text-container custom-textcolorb`}
         >
-          <div className="blog-card-title">
+          <div className="fontmycustom blog-card-title">
             <h2 className="text-3xl md:text-4xl font-bold mb-2 custom-textcolorb">
               <span
                 className="fontmycustom"
@@ -98,9 +98,9 @@ const BlogPost = ({
               Blog Title
             </h2>
           </div>
-          <p className="text-sm text-[#e3ddc8] mb-2">{date}</p>
+          <p className="ptagfont text-sm text-[#e3ddc8] mb-2">{date}</p>
           <img src={BLOG} alt="Blog Bar" className="mb-4 text-[#e3ddc8]" />
-          <p className="text-[#e3ddc8] custom-textcolorb">{content}</p>
+          <p className="ptagfont text-[#e3ddc8] custom-textcolorb">{content}</p>
         </div>
       </div>
     </article>

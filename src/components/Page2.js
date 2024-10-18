@@ -35,7 +35,7 @@ const Page2 = () => {
       id="page2"
       className="flex-none w-screen md:w-[120vw] lg:w-[140vw] h-screen bg-[#2b2a2a] relative overflow-hidden md:-ml-[10vw] lg:-ml-[20vw]"
     >
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-[300%] h-[300%] top-[-100%] left-[-100%] transform rotate-[315deg]">
           {[...Array(40)].map((_, index) => (
             <div
@@ -51,6 +51,33 @@ const Page2 = () => {
             <div
               key={index}
               className="line absolute w-px h-full bg-white/10 sm:hidden"
+              style={{
+                left: `${(index / 10) * 100}%`,
+                animationDelay: `${index * 0.1}s`,
+                top: "-100%",
+                bottom: "-100%",
+              }}
+            ></div>
+          ))}
+        </div>
+      </div> */}
+
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute w-[300%] h-[300%] top-[-100%] left-[-100%] transform rotate-[37deg]">
+          {[...Array(40)].map((_, index) => (
+            <div
+              key={index}
+              className="line2 absolute w-px h-full bg-white/10 hidden sm:block"
+              style={{
+                left: `${(index / 40) * 100}%`,
+                animationDelay: `${index * 0.1}s`,
+              }}
+            ></div>
+          ))}
+          {[...Array(10)].map((_, index) => (
+            <div
+              key={index}
+              className="line2 absolute w-px h-full bg-white/10 sm:hidden"
               style={{
                 left: `${(index / 10) * 100}%`,
                 animationDelay: `${index * 0.1}s`,
@@ -86,7 +113,7 @@ const Page2 = () => {
               </h1>
               <p
                 className={getAnimationClass(
-                  "text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-2xl mb-4 bg-businees animate-slide-up-1"
+                  "ptagfont text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-2xl mb-4 bg-businees animate-slide-up-1"
                 )}
               >
                 Your digital footprint starts with creating a rock-solid
@@ -96,7 +123,7 @@ const Page2 = () => {
               </p>
               <p
                 className={getAnimationClass(
-                  "text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-businees animate-slide-up-1"
+                  "ptagfont text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-2xl mb-4 bg-businees animate-slide-up-1"
                 )}
               >
                 An experience where your business goals, branding & marketing

@@ -164,7 +164,7 @@ const AnimatedAddpage = () => {
           opacity: 0.7;
         }
       `}</style>
-      <div className="relative flex flex-col md:flex-row items-center justify-between w-full min-h-[55vh] bg-white text-[#4e4e4e] font-['Montserrat',sans-serif] scroll-smooth overflow-hidden">
+      <div className="ptagfont relative flex flex-col md:flex-row items-center justify-between w-full min-h-[55vh] bg-white text-[#4e4e4e] font-['Montserrat',sans-serif] scroll-smooth overflow-hidden">
         <div className="hidden md:flex absolute top-0 left-0 w-1/2 h-full justify-center items-center overflow-hidden">
           {[...Array(5)].map((_, index) => (
             <div
@@ -182,7 +182,7 @@ const AnimatedAddpage = () => {
             initial="hidden"
             animate={textInView ? "visible" : "hidden"}
             variants={textVariants}
-            className="text-[6vw] md:text-[2.5vw] mb-[1px] max-w-[90%] md:max-w-full"
+            className="ptagfont text-[6vw] md:text-[2.5vw] mb-[1px] max-w-[90%] md:max-w-full"
           >
             The power of digital marketing carries a compounding ripple effect
             on your online marketing efforts. We aim to 10X your ROI and revenue
@@ -198,16 +198,16 @@ const AnimatedAddpage = () => {
           >
             <button
               onClick={handleModalToggle}
-              className="talk-to-us-button inline-block py-[10px] px-[40px] text-[6vw] md:text-[2vw] text-gray-500 bg-transparent border-[3px] border-gray-500  transition-all duration-300 whitespace-nowrap font-bold cursor-pointer relative"
+              className="ptagfont talk-to-us-button inline-block py-[10px] px-[40px] text-[6vw] md:text-[2vw] text-gray-500 bg-transparent border-[3px] border-gray-500  transition-all duration-300 whitespace-nowrap font-bold cursor-pointer relative"
             >
-              <span className="z-[2] block absolute w-full h-full"></span>
+              <span className="ptagfont z-[2] block absolute w-full h-full"></span>
               Talk To Us
             </button>
           </motion.div>
         </div>
 
         <Modal isOpen={isModalOpen} onClose={handleModalToggle}>
-          <div className="bg-[#1b1b1b] rounded-3xl lg:rounded-full w-full max-w-[95%] sm:max-w-[80%] md:max-w-[600px] lg:max-w-[600px] lg:h-[600px] xl:h-[550px] aspect-auto lg:aspect-square flex flex-col items-center justify-around p-4 sm:p-6 md:p-8 relative overflow-y-auto lg:overflow-hidden">
+          <div className="ptagfont bg-[#1b1b1b] rounded-3xl lg:rounded-full w-full max-w-[95%] sm:max-w-[80%] md:max-w-[600px] lg:max-w-[600px] lg:h-[600px] xl:h-[550px] aspect-auto lg:aspect-square flex flex-col items-center justify-around p-4 sm:p-6 md:p-8 relative overflow-y-auto lg:overflow-hidden">
             <button
               onClick={handleModalToggle}
               className="absolute -top-3 left-1/2 -translate-x-1/2 bg-transparent text-[#e2dcc8] w-10 h-10 rounded-full text-2xl hover:bg-[#e2dcc8] hover:text-black transition duration-300"
@@ -315,7 +315,7 @@ const AnimatedAddpage = () => {
             )}
           </div>
         </Modal>
-      </div> 
+      </div>
     </>
   );
 };

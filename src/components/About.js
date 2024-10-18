@@ -90,7 +90,7 @@ const About = () => {
           <div className="flex flex-col lg:grid lg:grid-cols-3 gap-4 lg:gap-8 flex-grow">
             <div className="flex flex-col justify-start lg:justify-center">
               <h1
-                className={`text-sm sm:text-base md:text-lg font-normal mb-2 lg:mb-4 transition-all duration-500 ${getAnimationClass(
+                className={`ptagfont text-sm sm:text-base md:text-lg font-normal mb-2 lg:mb-4 transition-all duration-500 ${getAnimationClass(
                   "us"
                 )}`}
               >
@@ -119,10 +119,10 @@ const About = () => {
                     "vision"
                   )}`}
                 >
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl fontmycustom mb-1 lg:mb-2">
+                  <h3 className="fontmycustom  text-3xl sm:text-4xl md:text-5xl fontmycustom mb-1 lg:mb-2">
                     Vision
                   </h3>
-                  <p className="text-xs sm:text-sm md:text-base">
+                  <p className="ptagfont text-xs sm:text-sm md:text-base">
                     Our vision is to ride on emergent technologies and be a
                     leader & innovator in creating user experiences.
                   </p>
@@ -135,7 +135,7 @@ const About = () => {
                   <h3 className="text-3xl sm:text-4xl md:text-5xl fontmycustom mb-1 lg:mb-2">
                     Mission
                   </h3>
-                  <p className="text-xs sm:text-sm md:text-base">
+                  <p className="text-xs sm:text-sm md:text-base ptagfont">
                     Our mission is to solve your user experience. Easily said
                     than done. That means we have to reimagine, disrupt status
                     quos, find elegant and thoughtful digital solutions on how
@@ -154,7 +154,7 @@ const About = () => {
               <h3 className="text-3xl sm:text-4xl md:text-5xl fontmycustom mb-1 lg:mb-2">
                 Our Focus
               </h3>
-              <p className="text-xs sm:text-sm md:text-base w-3/4 lg:w-2/3">
+              <p className="ptagfont text-xs sm:text-sm md:text-base w-3/4 lg:w-2/3">
                 We want to humanize the digital process. Infectious creativity
                 to create natural platforms for seamless communication and
                 experience. Decoding the code. Code only necessary scripts and

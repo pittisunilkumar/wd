@@ -108,7 +108,7 @@ const Transition = () => {
       </div>
 
       {/* Content */}
-      <div className="relative container mx-auto px-8 lg:px-16">
+      <div className="ptagfont relative container mx-auto px-8 lg:px-16">
         <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">
           <div
             className={`md:w-2/3 mb-8 md:mb-0 pr-4 transition-all duration-700 ${
@@ -141,7 +141,7 @@ const Transition = () => {
 
       {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={handleModalToggle}>
-        <div className="bg-[#1b1b1b] rounded-3xl lg:rounded-full w-full max-w-[95%] sm:max-w-[80%] md:max-w-[600px] lg:max-w-[600px] lg:h-[600px] xl:h-[550px] aspect-auto lg:aspect-square flex flex-col items-center justify-around p-4 sm:p-6 md:p-8 relative overflow-y-auto lg:overflow-hidden">
+        <div className="ptagfont bg-[#1b1b1b] rounded-3xl lg:rounded-full w-full max-w-[95%] sm:max-w-[80%] md:max-w-[600px] lg:max-w-[600px] lg:h-[600px] xl:h-[550px] aspect-auto lg:aspect-square flex flex-col items-center justify-around p-4 sm:p-6 md:p-8 relative overflow-y-auto lg:overflow-hidden">
           <button
             onClick={handleModalToggle}
             className="absolute -top-3 left-1/2 -translate-x-1/2 bg-transparent text-[#e2dcc8] w-10 h-10 rounded-full text-2xl hover:bg-[#e2dcc8] hover:text-black transition duration-300"

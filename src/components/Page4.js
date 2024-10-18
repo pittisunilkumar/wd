@@ -88,7 +88,7 @@ const Page4 = () => {
             WHO
           </AnimatedText>
           <AnimatedText
-            className="text-base md:text-lg text-gray-600 md:flex-1"
+            className="ptagfont text-base md:text-lg text-gray-600 md:flex-1"
             variants={fadeIn}
             delay={0.2}
           >
@@ -108,7 +108,7 @@ const Page4 = () => {
             WE
           </AnimatedText>
           <AnimatedText
-            className="text-base md:text-lg text-gray-600 md:flex-1 md:pr-8"
+            className="ptagfont text-base md:text-lg text-gray-600 md:flex-1 md:pr-8"
             variants={fadeIn}
             delay={0.6}
           >
@@ -128,7 +128,7 @@ const Page4 = () => {
               ARE
             </AnimatedText>
             <AnimatedText
-              className="text-base md:text-lg text-gray-600 md:flex-1 md:text-right"
+              className="ptagfont text-base md:text-lg text-gray-600 md:flex-1 md:text-right"
               variants={fadeIn}
               delay={1}
             >
