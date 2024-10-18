@@ -78,17 +78,16 @@ const Page4 = () => {
         </div>
       )}
 
-      <div className="lg:hidden flex flex-col min-h-screen relative z-10 p-4 md:p-8 ml-0 md:ml-16">
-        {/* Mobile content remains unchanged */}
-        <div className="md:absolute md:top-16 md:left-16 md:right-8 md:flex md:items-center">
+      <div className="lg:hidden flex flex-col min-h-screen relative z-10 p-4 sm:p-6 md:p-8 items-center text-center">
+        <div className="mb-8 sm:mb-12 max-w-md">
           <AnimatedText
-            className="text-6xl md:text-8xl text-gray-800 md:mr-8 text-center md:text-left fontmycustom"
+            className="text-4xl sm:text-5xl md:text-6xl text-gray-800 mb-4 fontmycustom"
             variants={slideFromLeft}
           >
             WHO
           </AnimatedText>
           <AnimatedText
-            className="ptagfont text-base md:text-lg text-gray-600 md:flex-1"
+            className="ptagfont text-sm sm:text-base text-gray-600"
             variants={fadeIn}
             delay={0.2}
           >
@@ -99,16 +98,16 @@ const Page4 = () => {
           </AnimatedText>
         </div>
 
-        <div className="md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:flex md:items-center md:w-full">
+        <div className="mb-8 sm:mb-12 max-w-md">
           <AnimatedText
-            className="text-6xl md:text-8xl md:mr-8 page4-stroke text-center md:text-left fontmycustom"
+            className="text-4xl sm:text-5xl md:text-6xl page4-stroke mb-4 fontmycustom"
             variants={slideFromTop}
             delay={0.4}
           >
             WE
           </AnimatedText>
           <AnimatedText
-            className="ptagfont text-base md:text-lg text-gray-600 md:flex-1 md:pr-8"
+            className="ptagfont text-sm sm:text-base text-gray-600"
             variants={fadeIn}
             delay={0.6}
           >
@@ -118,25 +117,23 @@ const Page4 = () => {
           </AnimatedText>
         </div>
 
-        <div className="md:absolute md:bottom-16 md:left-16 md:right-16 md:flex md:items-center md:justify-end">
-          <div className="flex flex-col md:flex-row-reverse md:items-center md:w-full">
-            <AnimatedText
-              className="text-6xl md:text-8xl text-gray-800 md:ml-8 text-center md:text-left fontmycustom"
-              variants={slideFromRight}
-              delay={0.8}
-            >
-              ARE
-            </AnimatedText>
-            <AnimatedText
-              className="ptagfont text-base md:text-lg text-gray-600 md:flex-1 md:text-right"
-              variants={fadeIn}
-              delay={1}
-            >
-              "We combine Website creation with a passion for Digital marketing.
-              They go hand in hand like teenagers in love. It's an inseparable
-              relationship."
-            </AnimatedText>
-          </div>
+        <div className="max-w-md">
+          <AnimatedText
+            className="text-4xl sm:text-5xl md:text-6xl text-gray-800 mb-4 fontmycustom"
+            variants={slideFromRight}
+            delay={0.8}
+          >
+            ARE
+          </AnimatedText>
+          <AnimatedText
+            className="ptagfont text-sm sm:text-base text-gray-600"
+            variants={fadeIn}
+            delay={1}
+          >
+            "We combine Website creation with a passion for Digital marketing.
+            They go hand in hand like teenagers in love. It's an inseparable
+            relationship."
+          </AnimatedText>
         </div>
       </div>
 
