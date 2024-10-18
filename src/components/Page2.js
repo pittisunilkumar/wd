@@ -137,7 +137,7 @@ const Page2 = () => {
                 src={animation}
                 alt="Animated Design"
                 className={getAnimationClass(
-                  "w-full max-w-[250px] sm:max-w-[350px] md:max-w-full md:w-[90%] lg:w-[95%] h-auto object-contain bg-transparent animate-left-to-right"
+                  "w-full max-w-[250px] sm:max-w-[250px] md:max-w-full md:w-[90%] lg:w-[95%] h-auto object-contain bg-transparent animate-left-to-right"
                 )}
               />
             </div>

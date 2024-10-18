@@ -90,7 +90,7 @@
 /* Add space above and below the content on mobile */
 @media (max-width: 768px) {
   #page2 {
-    padding-top: 40px; /* Add space above */
+    padding-top: 20px; /* Add space above */
   }
 
   /* Reduce the gap between text and image on mobile */
